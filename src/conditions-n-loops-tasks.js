@@ -8,7 +8,7 @@
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch       *
  *                                                                                           *
  ******************************************************************************************* */
-
+/** deleted the previous repository due to errors in ESlint */
 /**
  * Determines whether a given number is positive. Zero is considered positive.
  * This function does not use Number or Math class methods.
@@ -264,8 +264,20 @@ function isContainNumber(num, digit) {
  *  [2, 3, 9, 5] => 2       => 2 + 3 === 5 then balance element is 9 and its index = 2
  *  [1, 2, 3, 4, 5] => -1   => no balance element
  */
-function getBalanceIndex(/* arr */) {
-  throw new Error('Not implemented');
+function getBalanceIndex(arr) {
+  let totalSum = 0;
+  let leftSum = 0;
+
+  for (let i = 0; i < arr.length; i += 1) {
+    totalSum += arr[i];
+  }
+  for (let i = 0; i < arr.length; i += 1) {
+    if (leftSum === totalSum - leftSum - arr[i]) {
+      return i;
+    }
+    leftSum += arr[i];
+  }
+  return -1;
 }
 
 /**
